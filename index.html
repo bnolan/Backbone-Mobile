@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Backbone Mobile</title>
+  <meta name="viewport" content="width=default-width; user-scalable=no" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  
+	<script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+	<script type="text/javascript" charset="utf-8" src="jquery-mobile.js"></script>
+	<script type="text/javascript" charset="utf-8" src="underscore.js"></script>
+	<script type="text/javascript" charset="utf-8" src="backbone.js"></script>
+	<script type="text/javascript" charset="utf-8" src="foursquare.json"></script>
+	<script type="text/javascript" charset="utf-8" src="application.js"></script>
+	
+	<link rel="stylesheet" href="jquery-mobile.css" />
+
+  <script type="text/javascript" charset="utf-8">
+  	function onBodyLoad(){
+  		document.addEventListener("deviceready",onDeviceReady,false);
+  	}
+	
+  	function onDeviceReady(){
+  	}
+  </script>
+
+</head>
+  <body onload="onBodyLoad()">
+
+    <div data-role="page" id="home">
+
+      <div data-role="header">
+        <h1>Backbone Mobile</h1>
+      </div>
+
+      <div data-role="content">	
+      </div>
+      
+      <div data-role="footer">
+        <h4><a rel="external" href="http://bennolan.com/">@bnolan</a></h4>
+      </div>
+    </div>
+
+  </body>
+</html>
