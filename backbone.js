@@ -103,9 +103,9 @@
        */
       if (list = calls['all']) {
         for (i = 0, l = list.length; i < l; i++) {
-          if(list[i]){
+          //if(list[i]){
             list[i].apply(this, arguments);
-          }
+          //}
         }
       }
       /*

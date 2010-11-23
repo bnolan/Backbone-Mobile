@@ -55,6 +55,7 @@ class VenueCollection extends Backbone.Collection
   model : Venue
   
   constructor: ->
+    super
     @refresh($FOURSQUARE_JSON)
   
 this.Venues = new VenueCollection

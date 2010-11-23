@@ -54,6 +54,7 @@
   };
   VenueCollection = (function() {
     function VenueCollection() {
+      VenueCollection.__super__.constructor.apply(this, arguments);
       this.refresh($FOURSQUARE_JSON);
       return this;
     }
