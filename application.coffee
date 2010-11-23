@@ -16,7 +16,10 @@ app =
     
   redirectTo: (page) ->
     $.mobile.changePage page
-    
+  
+  goBack: ->
+    history.back()
+      
 
 #
 # Venue class
@@ -107,15 +110,15 @@ class EditVenueView extends Backbone.View
 
   onSubmit: (e) ->
     @model.set {
-      name : $("input[name='name']").val(),
-      address : $("input[name='address']").val(),
-      city : $("input[name='city']").val(),
-      state : $("input[name='state']").val()
+      name : @$("input[name='name']").val(),
+      address : @$("input[name='address']").val(),
+      city : @$("input[name='city']").val(),
+      state : @$("input[name='state']").val()
     }
     
     @model.trigger('change')
 
-    app.redirectTo "#venues-#{@model.cid}"
+    app.goBack()
     
     e.preventDefault()
     e.stopPropagation()

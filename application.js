@@ -20,6 +20,9 @@
     },
     redirectTo: function(page) {
       return $.mobile.changePage(page);
+    },
+    goBack: function() {
+      return history.back();
     }
   };
   Venue = (function() {
@@ -79,13 +82,13 @@
   };
   EditVenueView.prototype.onSubmit = function(e) {
     this.model.set({
-      name: $("input[name='name']").val(),
-      address: $("input[name='address']").val(),
-      city: $("input[name='city']").val(),
-      state: $("input[name='state']").val()
+      name: this.$("input[name='name']").val(),
+      address: this.$("input[name='address']").val(),
+      city: this.$("input[name='city']").val(),
+      state: this.$("input[name='state']").val()
     });
     this.model.trigger('change');
-    app.redirectTo("#venues-" + this.model.cid);
+    app.goBack();
     e.preventDefault();
     return e.stopPropagation();
   };
