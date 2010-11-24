@@ -2948,7 +2948,7 @@ $.fn.grid = function(options){
 		
 		//support conditions that must be met in order to proceed
 		gradeA: function(){
-			return $.support.mediaquery;
+			return true; // $.support.mediaquery;
 		}
 	});
 	
@@ -2959,7 +2959,7 @@ $.fn.grid = function(options){
 	//otherwise, proceed with the enhancements
 	if ( !$.mobile.gradeA() ) {
 		return;
-	}	
+	}
 
 	//define vars for interal use
 	var $window = $(window),
@@ -3323,7 +3323,7 @@ $.fn.grid = function(options){
        *
        */
       if(to.length == 0){ // Page could not be found
-          console.log("Routing to " + url + "...");
+        // console.log("Routing to " + url + "...");
 
           to = $("<div data-role='page' id='" + url + "'><div data-role='header'><h1>&nbsp;</h1></div><div data-role='content'><img src='images/ajax-loader.png' /></div></div>").appendTo('body')
 
@@ -3529,7 +3529,7 @@ $.fn.grid = function(options){
 	});
 
 	//dom-ready
-	$(function(){
+	$(document).ready(function(){
 		var $pages = $("[data-role='page']");
 		//set up active page
 		$startPage = $.mobile.activePage = $pages.first();
