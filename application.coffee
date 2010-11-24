@@ -18,7 +18,7 @@ app =
     $.mobile.changePage page
   
   goBack: ->
-    history.back()
+    $.historyBack()
       
 
 #

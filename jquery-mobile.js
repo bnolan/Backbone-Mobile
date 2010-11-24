@@ -864,6 +864,7 @@ $.each({
   fake_onhashchange = (function(){
     var self = {},
       timeout_id,
+			histories = [location.href.replace( /#.*/, '' )],
       
       // Remember the initial hash so it doesn't get triggered immediately.
       last_hash = get_fragment(),
@@ -882,7 +883,30 @@ $.each({
       timeout_id && clearTimeout( timeout_id );
       timeout_id = undefined;
     };
-    
+
+    /*
+		 * @bnolan hack to make work on nokia
+		 */
+
+		if(supports_onhashchange){
+			$.historyBack = function(){
+				history.back();
+			}
+		}else{
+	    $.historyBack = function(){
+				if(histories.length > 1){
+					// Remove the top
+					histories.pop()
+				
+					// Get the prior..
+					var url = histories.pop();
+					location.href = url;
+				}
+			}
+		}
+
+		/* end hack */
+		
     // This polling loop checks every $.fn.hashchange.delay milliseconds to see
     // if location.hash has changed, and triggers the 'hashchange' event on
     // window when necessary.
@@ -892,7 +916,14 @@ $.each({
       
       if ( hash !== last_hash ) {
         history_set( last_hash = hash, history_hash );
-        
+
+        /*
+ 				 * @bnolan hack to make work on nokia
+				 */
+				var url = location.href.replace( /#.*/, '' ) + hash;
+				histories.push(url);
+				/* end hack */
+				
         $(window).trigger( str_hashchange );
         
       } else if ( history_hash !== last_hash ) {
@@ -901,7 +932,7 @@ $.each({
       
       timeout_id = setTimeout( poll, $.fn[ str_hashchange ].delay );
     };
-    
+
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvv REMOVE IF NOT SUPPORTING IE6/7/8 vvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -1077,7 +1108,7 @@ $.widget( "mobile.page", $.mobile.widget, {
 
 					$( "<a href='#' class='ui-btn-left' data-icon='arrow-l'>"+ o.backBtnText +"</a>" )
 						.click(function() {
-							history.back();
+							$.historyBack();
 							return false;
 						})
 						.prependTo( $this );

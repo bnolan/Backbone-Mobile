@@ -22,7 +22,7 @@
       return $.mobile.changePage(page);
     },
     goBack: function() {
-      return history.back();
+      return $.historyBack();
     }
   };
   Venue = (function() {
