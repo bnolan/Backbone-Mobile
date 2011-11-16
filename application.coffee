@@ -1,4 +1,3 @@
-
 #
 # Some helper methods
 #
@@ -162,7 +161,7 @@ class ShowVenueView extends Backbone.View
       
         <ul data-role="listview" data-inset="true">
           <li data-role="list-divider">Actions</li>
-          <li><a rel="external" href="openmap:q=<%= encodeURIComponent(venue.getAddress) %>">Open Map</li>
+          <li><a rel="external" href="openmap:q=<%= encodeURIComponent(venue.getAddress) %>">Open Map</a></li>
           <li><a href="#venues-<%= venue.cid %>-edit">Edit</a></li>
         </ul>
       </div>
