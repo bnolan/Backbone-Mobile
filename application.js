@@ -108,7 +108,7 @@
       this.render = function() { return ShowVenueView.prototype.render.apply(_this, arguments); };
       ShowVenueView.__super__.constructor.apply(this, arguments);
       this.el = app.activePage();
-      this.template = _.template('<div>\n  \n  <p>\n    <img style="width: 100%" src="<%= venue.getMapUrl() %>" />\n  </p>\n  \n  <address>\n    <%= venue.getAddress() %>\n  </address>\n\n  <ul data-role="listview" data-inset="true">\n    <li data-role="list-divider">Actions</li>\n    <li><a rel="external" href="openmap:q=<%= encodeURIComponent(venue.getAddress) %>">Open Map</li>\n    <li><a href="#venues-<%= venue.cid %>-edit">Edit</a></li>\n  </ul>\n</div>');
+      this.template = _.template('<div>\n  \n  <p>\n    <img style="width: 100%" src="<%= venue.getMapUrl() %>" />\n  </p>\n  \n  <address>\n    <%= venue.getAddress() %>\n  </address>\n\n  <ul data-role="listview" data-inset="true">\n    <li data-role="list-divider">Actions</li>\n    <li><a rel="external" href="openmap:q=<%= encodeURIComponent(venue.getAddress) %>">Open Map</a></li>\n    <li><a href="#venues-<%= venue.cid %>-edit">Edit</a></li>\n  </ul>\n</div>');
       this.model.bind('change', this.render);
       this.render();
       return this;
